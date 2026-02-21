@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manul GAME Official Store - Kingston Edition</title>
+    <title>Manul GAME Store - Kingston</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -12,36 +12,33 @@
         .gradient-text { background: linear-gradient(to right, #a855f7, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hidden { display: none; }
         .active-tab { border-bottom: 2px solid #a855f7; color: #a855f7; font-weight: bold; }
-        
         .floating-btns { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 1000; }
-        .btn-call { background: #3b82f6; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
-        .btn-wa { background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; items-center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
-        .game-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; }
+        .btn-call { background: #3b82f6; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; }
+        .btn-wa { background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; items-center; justify-content: center; }
     </style>
 </head>
 <body>
 
     <section id="authPages" class="flex flex-col items-center justify-center min-h-screen p-5">
         <div id="regBox" class="glass p-8 rounded-3xl w-full max-w-md">
-            <h2 class="text-3xl font-bold mb-2 text-center gradient-text">Manul Store</h2>
-            <p class="text-xs text-gray-500 text-center mb-6">Jisajili (Kingston Project)</p>
+            <h2 class="text-3xl font-bold mb-2 text-center gradient-text">Jisajili</h2>
             <div class="space-y-4">
-                <input type="text" id="regName" placeholder="Jina Kamili" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
-                <input type="email" id="regEmail" placeholder="Barua Pepe" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
-                <input type="password" id="regPass" placeholder="Nenosiri" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
-                <button onclick="handleRegister()" class="w-full bg-purple-600 p-3 rounded-xl font-bold">Jisajili</button>
+                <input type="text" id="regName" placeholder="Jina Kamili" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
+                <input type="email" id="regEmail" placeholder="Barua Pepe" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
+                <input type="password" id="regPass" placeholder="Nenosiri" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
+                <button onclick="handleRegister()" class="w-full bg-purple-600 p-3 rounded-xl font-bold">Tengeneza Akaunti</button>
             </div>
-            <p class="mt-4 text-center text-sm">Tayari una akaunti? <button onclick="toggleAuth()" class="text-purple-400 font-bold">Ingia</button></p>
+            <p class="mt-4 text-center text-sm text-gray-400">Una akaunti? <button onclick="toggleAuth()" class="text-purple-400 font-bold">Ingia</button></p>
         </div>
 
         <div id="loginBox" class="hidden glass p-8 rounded-3xl w-full max-w-md">
             <h2 class="text-3xl font-bold mb-6 text-center text-blue-400">Karibu Tena</h2>
             <div class="space-y-4">
-                <input type="email" id="logEmail" placeholder="Barua Pepe" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
-                <input type="password" id="logPass" placeholder="Nenosiri" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
+                <input type="email" id="logEmail" placeholder="Barua Pepe" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
+                <input type="password" id="logPass" placeholder="Nenosiri" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
                 <button onclick="handleLogin()" class="w-full bg-blue-600 p-3 rounded-xl font-bold">Ingia</button>
             </div>
-            <p class="mt-4 text-center text-sm">Huna akaunti? <button onclick="toggleAuth()" class="text-blue-400 font-bold">Jisajili</button></p>
+            <p class="mt-4 text-center text-sm text-gray-400">Huna akaunti? <button onclick="toggleAuth()" class="text-blue-400 font-bold">Jisajili</button></p>
         </div>
     </section>
 
@@ -58,33 +55,37 @@
 
         <section id="content-home" class="p-6 text-center">
             <h1 class="text-2xl font-bold mt-10">Karibu, <span id="userNameDisplay" class="gradient-text text-3xl">Gamer</span>!</h1>
-            <div class="mt-8 glass p-6 rounded-2xl">
-                <h3 class="text-xl font-bold mb-2">Updates & News</h3>
-                <p class="text-gray-400">Karibu Kingston Store. Hapa utapata updates za hivi punde kuhusu magame mapya na ofa kali!</p>
+            <div class="mt-8 glass p-6 rounded-2xl max-w-lg mx-auto">
+                <h3 class="text-xl font-bold mb-2">Updates & Gallery</h3>
+                <p class="text-gray-400 text-sm">Hapa utaona picha na updates zote mpya za magame yetu kutoka Kingston Store.</p>
             </div>
         </section>
 
         <section id="content-store" class="hidden p-6">
-            <h2 class="text-xl font-bold mb-6">Duka & Gallery</h2>
+            <h2 class="text-xl font-bold mb-6 text-center">Gallery & Game Store</h2>
             <div id="gameList" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 </div>
         </section>
 
         <section id="content-admin" class="hidden p-6">
-            <h2 class="text-xl font-bold mb-4 text-orange-400">Admin Panel - Post New Game</h2>
-            <div class="glass p-6 rounded-2xl space-y-4">
-                <input type="text" id="gameTitle" placeholder="Jina la Game" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:ring-2 ring-purple-500 outline-none">
-                <input type="text" id="gamePrice" placeholder="Bei (Mfano: Tsh 25,000)" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:ring-2 ring-purple-500 outline-none">
-                <input type="text" id="gameImg" placeholder="URL ya Picha (Paste link ya picha hapa)" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:ring-2 ring-purple-500 outline-none">
-                <input type="text" id="gameLink" placeholder="External Link (Mfano: Link ya YouTube au Google Drive)" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:ring-2 ring-purple-500 outline-none">
-                <textarea id="gameDesc" placeholder="Maelezo kidogo kuhusu game au update" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:ring-2 ring-purple-500 outline-none"></textarea>
-                <button onclick="uploadGame()" class="w-full bg-orange-600 p-3 rounded-xl font-bold hover:bg-orange-700 transition">POST GAME / UPDATE</button>
+            <h2 class="text-xl font-bold mb-4 text-orange-400 text-center">Admin: Post Game/Update</h2>
+            <div class="glass p-6 rounded-2xl space-y-4 max-w-xl mx-auto">
+                <input type="text" id="gameTitle" placeholder="Jina la Game au Update" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
+                <input type="text" id="gamePrice" placeholder="Bei (Mfano: Tsh 15,000)" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
+                
+                <input type="text" id="gameImg" placeholder="Paste Link ya Picha hapa (URL)" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none ring-1 ring-purple-500">
+                
+                <input type="text" id="gameLink" placeholder="External Link (YouTube/Drive - Optional)" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
+                
+                <textarea id="gameDesc" placeholder="Maelezo zaidi..." class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none h-24"></textarea>
+                
+                <button onclick="uploadGame()" class="w-full bg-orange-600 p-3 rounded-xl font-bold hover:bg-orange-700 transition">POST NOW</button>
             </div>
         </section>
 
         <div class="floating-btns">
-            <a href="tel:+255793770731" class="btn-call"><i class="fas fa-phone-alt"></i></a>
-            <a href="https://wa.me/255793770731?text=Habari, nahitaji msaada wa game." target="_blank" class="btn-wa"><i class="fab fa-whatsapp text-3xl"></i></a>
+            <a href="tel:+255793770731" class="btn-call text-white"><i class="fas fa-phone-alt"></i></a>
+            <a href="https://wa.me/255793770731" target="_blank" class="btn-wa text-white"><i class="fab fa-whatsapp text-3xl"></i></a>
         </div>
     </main>
 
@@ -93,6 +94,7 @@
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+        // CONFIG YAKO YA KINGSTON
         const firebaseConfig = {
             apiKey: "AIzaSyDu6sdbL4l8pbycSdSm0qHm_ndGz3FrWbY",
             authDomain: "kingston-bb437.firebaseapp.com",
@@ -106,7 +108,6 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // LOGIN
         window.handleLogin = async () => {
             const email = document.getElementById('logEmail').value;
             const pass = document.getElementById('logPass').value;
@@ -114,17 +115,14 @@
                 const userCred = await signInWithEmailAndPassword(auth, email, pass);
                 const userDoc = await getDoc(doc(db, "users", userCred.user.uid));
                 const userData = userDoc.data();
-                
                 document.getElementById('authPages').classList.add('hidden');
                 document.getElementById('dashboard').classList.remove('hidden');
                 document.getElementById('userNameDisplay').innerText = userData.fullName;
-                
                 if(userData.role === 'admin') document.getElementById('adminBtn').classList.remove('hidden');
                 loadGames();
-            } catch (e) { alert("Ingia imeshindikana! Hakikisha umejisajili Kingston."); }
+            } catch (e) { alert("Login Failed!"); }
         };
 
-        // REGISTER
         window.handleRegister = async () => {
             const name = document.getElementById('regName').value;
             const email = document.getElementById('regEmail').value;
@@ -132,12 +130,11 @@
             try {
                 const userCred = await createUserWithEmailAndPassword(auth, email, pass);
                 await setDoc(doc(db, "users", userCred.user.uid), { fullName: name, email: email, role: 'user' });
-                alert("Usajili Umekamilika! Sasa Ingia.");
+                alert("Usajili Umekamilika! Login sasa.");
                 toggleAuth();
             } catch (e) { alert(e.message); }
         };
 
-        // UPLOAD GAME (Sasa na Picha na Link)
         window.uploadGame = async () => {
             const title = document.getElementById('gameTitle').value;
             const price = document.getElementById('gamePrice').value;
@@ -145,42 +142,33 @@
             const link = document.getElementById('gameLink').value;
             const desc = document.getElementById('gameDesc').value;
 
-            if(!title || !price || !img) return alert("Jaza Jina, Bei na Picha!");
+            if(!title || !img) return alert("Jaza angalau Jina na Link ya Picha!");
 
             try {
-                await addDoc(collection(db, "games"), { 
-                    title, price, img, link, desc, date: new Date() 
-                });
-                alert("Limepostiwa!");
-                // Clear inputs
-                ['gameTitle', 'gamePrice', 'gameImg', 'gameLink', 'gameDesc'].forEach(id => document.getElementById(id).value = "");
-                loadGames();
+                await addDoc(collection(db, "games"), { title, price, img, link, desc, date: new Date() });
+                alert("Imepostiwa!");
+                location.reload(); 
             } catch (e) { alert("Kosa la kuposti!"); }
         };
 
-        // LOAD GAMES TO STORE (Gallery View)
         async function loadGames() {
             const q = query(collection(db, "games"), orderBy("date", "desc"));
             const querySnapshot = await getDocs(q);
             const gameList = document.getElementById('gameList');
             gameList.innerHTML = "";
-            
             querySnapshot.forEach((doc) => {
                 const game = doc.data();
                 gameList.innerHTML += `
-                    <div class="glass p-4 rounded-2xl flex flex-col space-y-3">
-                        <img src="${game.img || 'https://via.placeholder.com/300'}" alt="Game Image" class="w-full h-48 object-cover rounded-xl">
+                    <div class="glass p-4 rounded-2xl space-y-3">
+                        <img src="${game.img}" class="w-full h-48 object-cover rounded-xl shadow-lg" onerror="this.src='https://via.placeholder.com/300'">
                         <div>
-                            <h4 class="font-bold text-xl text-blue-300">${game.title}</h4>
-                            <p class="text-green-400 font-bold">${game.price}</p>
-                            <p class="text-gray-400 text-sm mt-2">${game.desc || ''}</p>
+                            <h4 class="font-bold text-lg text-blue-300">${game.title}</h4>
+                            <p class="text-green-400 font-bold text-sm">${game.price}</p>
+                            <p class="text-gray-400 text-xs mt-1">${game.desc}</p>
                         </div>
                         <div class="flex gap-2">
-                            <button class="flex-1 bg-purple-600 py-2 rounded-lg font-bold" 
-                                onclick="window.open('https://wa.me/255793770731?text=Nahitaji game la: ${game.title}')">
-                                WHATSAPP BUY
-                            </button>
-                            ${game.link ? `<button class="flex-1 bg-blue-600 py-2 rounded-lg font-bold text-xs" onclick="window.open('${game.link}')">OPEN LINK</button>` : ''}
+                            <button onclick="window.open('https://wa.me/255793770731?text=Nahitaji: ${game.title}')" class="flex-1 bg-purple-600 py-2 rounded-lg text-xs font-bold">WHATSAPP</button>
+                            ${game.link ? `<button onclick="window.open('${game.link}')" class="flex-1 bg-blue-600 py-2 rounded-lg text-xs font-bold">LINK</button>` : ''}
                         </div>
                     </div>`;
             });
@@ -194,14 +182,8 @@
         window.switchTab = (tab) => {
             ['home', 'store', 'admin'].forEach(t => document.getElementById('content-' + t).classList.add('hidden'));
             document.getElementById('content-' + tab).classList.remove('hidden');
-            // Remove active style from all tabs
-            ['home', 'store', 'admin'].forEach(t => {
-                const btn = document.getElementById('tab-' + t);
-                if(btn) btn.classList.remove('active-tab');
-            });
-            // Add active style to selected tab
-            const activeBtn = document.getElementById('tab-' + tab);
-            if(activeBtn) activeBtn.classList.add('active-tab');
+            ['home', 'store', 'admin'].forEach(t => document.getElementById('tab-' + t)?.classList.remove('active-tab'));
+            document.getElementById('tab-' + tab)?.classList.add('active-tab');
         };
     </script>
 </body>

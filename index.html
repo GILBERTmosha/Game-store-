@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manul Official Store - Admin & Store</title>
+    <title>Manul Official Store - Admin & Recovery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -13,19 +13,17 @@
         .hidden { display: none; }
         .active-tab { border-bottom: 2px solid #a855f7; color: #a855f7; font-weight: bold; }
         
-        /* Floating Buttons CSS */
         .floating-btns { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 1000; }
-        .btn-call { background: #3b82f6; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); transition: 0.3s; }
-        .btn-wa { background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; items-center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: 0.3s; }
-        .btn-wa:hover, .btn-call:hover { transform: scale(1.1); }
+        .btn-call { background: #3b82f6; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
+        .btn-wa { background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; items-center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
     </style>
 </head>
 <body>
 
     <section id="authPages" class="flex flex-col items-center justify-center min-h-screen p-5">
-        <div id="regBox" class="glass p-8 rounded-3xl w-full max-w-md shadow-2xl">
+        <div id="regBox" class="glass p-8 rounded-3xl w-full max-w-md">
             <h2 class="text-3xl font-bold mb-2 text-center gradient-text">Manul Store</h2>
-            <p class="text-gray-400 text-center mb-8 text-sm">Jisajili sasa.</p>
+            <p class="text-xs text-gray-500 text-center mb-6">Jisajili ili kuanza</p>
             <div class="space-y-4">
                 <input type="text" id="regName" placeholder="Jina Kamili" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
                 <input type="email" id="regEmail" placeholder="Barua Pepe" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
@@ -35,11 +33,16 @@
             <p class="mt-4 text-center text-sm">Tayari una akaunti? <button onclick="toggleAuth()" class="text-purple-400 font-bold">Ingia</button></p>
         </div>
 
-        <div id="loginBox" class="hidden glass p-8 rounded-3xl w-full max-w-md shadow-2xl">
+        <div id="loginBox" class="hidden glass p-8 rounded-3xl w-full max-w-md">
             <h2 class="text-3xl font-bold mb-6 text-center text-blue-400">Karibu Tena</h2>
             <div class="space-y-4">
                 <input type="email" id="logEmail" placeholder="Barua Pepe" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
                 <input type="password" id="logPass" placeholder="Nenosiri" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
+                
+                <div class="text-right">
+                    <button onclick="handleResetPassword()" class="text-[10px] text-gray-500 hover:text-blue-400 underline">Umesahau Nenosiri?</button>
+                </div>
+
                 <button onclick="handleLogin()" class="w-full bg-blue-600 p-3 rounded-xl font-bold">Ingia</button>
             </div>
             <p class="mt-4 text-center text-sm">Huna akaunti? <button onclick="toggleAuth()" class="text-blue-400 font-bold">Jisajili</button></p>
@@ -49,7 +52,7 @@
     <main id="dashboard" class="hidden min-h-screen">
         <nav class="glass sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
             <div class="font-bold text-xl gradient-text">ManulOfficial</div>
-            <div class="flex space-x-4 text-[10px] uppercase tracking-tighter">
+            <div class="flex space-x-4 text-[10px] uppercase">
                 <button onclick="switchTab('home')" id="tab-home" class="active-tab">Home</button>
                 <button onclick="switchTab('store')" id="tab-store">Store</button>
                 <button id="adminBtn" onclick="switchTab('admin')" class="hidden text-orange-400 font-bold">Admin Panel</button>
@@ -57,42 +60,31 @@
             </div>
         </nav>
 
-        <section id="content-home" class="p-6">
-            <h1 class="text-2xl font-bold text-center mt-10">Welcome Back, <span id="userNameDisplay" class="gradient-text">Gamer</span>!</h1>
-            <div class="grid grid-cols-2 gap-4 mt-10">
-                <div class="glass p-5 rounded-2xl text-center">
-                    <div class="text-blue-400 text-2xl mb-1 font-bold">3+</div>
-                    <div class="text-[10px] text-gray-500 uppercase">Projects</div>
-                </div>
-                <div class="glass p-5 rounded-2xl text-center">
-                    <div class="text-purple-400 text-2xl mb-1 font-bold">10K+</div>
-                    <div class="text-[10px] text-gray-500 uppercase">Happy Users</div>
-                </div>
-            </div>
+        <section id="content-home" class="p-6 text-center">
+            <h1 class="text-2xl font-bold mt-10">Karibu, <span id="userNameDisplay" class="gradient-text text-3xl">Gamer</span>!</h1>
+            <p class="text-gray-400 mt-4">Tumia menu ya juu kupata unachohitaji.</p>
         </section>
 
         <section id="content-store" class="hidden p-6">
             <h2 class="text-xl font-bold mb-4">Duka la Magame</h2>
-            <div id="gameList" class="space-y-4">
-                <p class="text-gray-500 text-sm italic">Loading games...</p>
-            </div>
+            <div id="gameList" class="space-y-4"></div>
         </section>
 
         <section id="content-admin" class="hidden p-6">
-            <h2 class="text-xl font-bold mb-4 text-orange-400">Admin Panel - Upload New Game</h2>
+            <h2 class="text-xl font-bold mb-4 text-orange-400">Admin Panel - Post New Game</h2>
             <div class="glass p-6 rounded-2xl space-y-4">
                 <input type="text" id="gameTitle" placeholder="Jina la Game" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl">
-                <input type="text" id="gamePrice" placeholder="Bei (Mfano: Tsh 25k)" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl">
+                <input type="text" id="gamePrice" placeholder="Bei (Mfano: Tsh 25,000)" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl">
                 <textarea id="gameDesc" placeholder="Maelezo kidogo" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl"></textarea>
                 <button onclick="uploadGame()" class="w-full bg-orange-600 p-3 rounded-xl font-bold">POST GAME</button>
             </div>
         </section>
 
         <div class="floating-btns">
-            <a href="tel:+2557XXXXXXXX" class="btn-call">
+            <a href="tel:+255793770731" class="btn-call flex items-center justify-center">
                 <i class="fas fa-phone-alt text-white"></i>
             </a>
-            <a href="https://wa.me/2557XXXXXXXX?text=Habari, nahitaji msaada" target="_blank" class="btn-wa">
+            <a href="https://wa.me/255793770731?text=Habari Manul Official, nahitaji msaada." target="_blank" class="btn-wa flex items-center justify-center">
                 <i class="fab fa-whatsapp text-white text-3xl"></i>
             </a>
         </div>
@@ -100,7 +92,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -116,26 +108,28 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // --- Auth & Admin Logic ---
+        window.handleResetPassword = async () => {
+            const email = document.getElementById('logEmail').value;
+            if(!email) return alert("Andika email yako kwanza!");
+            try {
+                await sendPasswordResetEmail(auth, email);
+                alert("Link ya kubadili password imetumwa!");
+            } catch (e) { alert("Kosa: " + e.message); }
+        };
+
         window.handleLogin = async () => {
             const email = document.getElementById('logEmail').value;
             const pass = document.getElementById('logPass').value;
             try {
                 const userCred = await signInWithEmailAndPassword(auth, email, pass);
                 const userDoc = await getDoc(doc(db, "users", userCred.user.uid));
-                
                 document.getElementById('authPages').classList.add('hidden');
                 document.getElementById('dashboard').classList.remove('hidden');
-                
                 const userData = userDoc.data();
                 document.getElementById('userNameDisplay').innerText = userData.fullName;
-
-                // Angalia kama ni ADMIN (Wewe au msaidizi)
-                if(userData.role === 'admin') {
-                    document.getElementById('adminBtn').classList.remove('hidden');
-                }
+                if(userData.role === 'admin') document.getElementById('adminBtn').classList.remove('hidden');
                 loadGames();
-            } catch (e) { alert("Login failed!"); }
+            } catch (e) { alert("Login Failed!"); }
         };
 
         window.handleRegister = async () => {
@@ -144,28 +138,21 @@
             const pass = document.getElementById('regPass').value;
             try {
                 const userCred = await createUserWithEmailAndPassword(auth, email, pass);
-                // Kwa kawaida kila mtu ni 'user'. Admin utambadilisha kule Firebase Console.
-                await setDoc(doc(db, "users", userCred.user.uid), {
-                    fullName: name,
-                    email: email,
-                    role: 'user' 
-                });
-                alert("Usajili umefanikiwa! Tafadhali Ingia.");
+                await setDoc(doc(db, "users", userCred.user.uid), { fullName: name, email: email, role: 'user' });
+                alert("Usajili Umekamilika!");
                 toggleAuth();
             } catch (e) { alert(e.message); }
         };
 
-        // --- Store Logic (Upload/Read) ---
         window.uploadGame = async () => {
             const title = document.getElementById('gameTitle').value;
             const price = document.getElementById('gamePrice').value;
             const desc = document.getElementById('gameDesc').value;
-
             try {
                 await addDoc(collection(db, "games"), { title, price, desc, date: new Date() });
-                alert("Game limepostiwa!");
-                location.reload();
-            } catch (e) { alert("Imefeli kupost!"); }
+                alert("Limepostiwa!");
+                loadGames();
+            } catch (e) { alert("Imeshindikana!"); }
         };
 
         async function loadGames() {
@@ -176,17 +163,12 @@
                 const game = doc.data();
                 gameList.innerHTML += `
                     <div class="glass p-4 rounded-xl flex justify-between items-center">
-                        <div>
-                            <h4 class="font-bold">${game.title}</h4>
-                            <p class="text-xs text-gray-400">${game.desc}</p>
-                            <p class="text-green-400 font-bold">${game.price}</p>
-                        </div>
-                        <button class="bg-purple-600 px-3 py-1 rounded-lg text-[10px]" onclick="window.open('https://wa.me/2557XXXXXXXX?text=Nahitaji ${game.title}')">BUY</button>
+                        <div><h4 class="font-bold text-blue-300">${game.title}</h4><p class="text-green-400">${game.price}</p></div>
+                        <button class="bg-purple-600 px-4 py-2 rounded-lg text-xs" onclick="window.open('https://wa.me/255793770731?text=Nahitaji ${game.title}')">BUY</button>
                     </div>`;
             });
         }
 
-        // --- UI Helpers ---
         window.toggleAuth = () => {
             document.getElementById('regBox').classList.toggle('hidden');
             document.getElementById('loginBox').classList.toggle('hidden');

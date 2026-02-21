@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manul Official Store - Admin & Recovery</title>
+    <title>Manul GAME Official Store - Kingston Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -23,7 +23,7 @@
     <section id="authPages" class="flex flex-col items-center justify-center min-h-screen p-5">
         <div id="regBox" class="glass p-8 rounded-3xl w-full max-w-md">
             <h2 class="text-3xl font-bold mb-2 text-center gradient-text">Manul Store</h2>
-            <p class="text-xs text-gray-500 text-center mb-6">Jisajili ili kuanza</p>
+            <p class="text-xs text-gray-500 text-center mb-6">Jisajili ili kuanza (Kingston Project)</p>
             <div class="space-y-4">
                 <input type="text" id="regName" placeholder="Jina Kamili" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
                 <input type="email" id="regEmail" placeholder="Barua Pepe" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
@@ -62,7 +62,7 @@
 
         <section id="content-home" class="p-6 text-center">
             <h1 class="text-2xl font-bold mt-10">Karibu, <span id="userNameDisplay" class="gradient-text text-3xl">Gamer</span>!</h1>
-            <p class="text-gray-400 mt-4">Tumia menu ya juu kupata unachohitaji.</p>
+            <p class="text-gray-400 mt-4">Kila kitu sasa kiko kwenye mradi mpya.</p>
         </section>
 
         <section id="content-store" class="hidden p-6">
@@ -95,13 +95,14 @@
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+        // KODI ZAKO MPYA ZA KINGSTON
         const firebaseConfig = {
-            apiKey: "AIzaSyDehaAdxFXs8d_kzfNEPqCvmL6Xn9iAnH0",
-            authDomain: "my-gamastore.firebaseapp.com",
-            projectId: "my-gamastore",
-            storageBucket: "my-gamastore.firebasestorage.app",
-            messagingSenderId: "979942982837",
-            appId: "1:979942982837:web:d78ca85680a4fb53a5aafc"
+            apiKey: "AIzaSyDu6sdbL4l8pbycSdSm0qHm_ndGz3FrWbY",
+            authDomain: "kingston-bb437.firebaseapp.com",
+            projectId: "kingston-bb437",
+            storageBucket: "kingston-bb437.firebasestorage.app",
+            messagingSenderId: "317220698974",
+            appId: "1:317220698974:web:76bfe0d6f0fcb2327a6dcf"
         };
 
         const app = initializeApp(firebaseConfig);
@@ -129,7 +130,7 @@
                 document.getElementById('userNameDisplay').innerText = userData.fullName;
                 if(userData.role === 'admin') document.getElementById('adminBtn').classList.remove('hidden');
                 loadGames();
-            } catch (e) { alert("Login Failed!"); }
+            } catch (e) { alert("Login Failed! Hakikisha umejisajili kwanza kwenye Kingston."); }
         };
 
         window.handleRegister = async () => {
@@ -139,7 +140,7 @@
             try {
                 const userCred = await createUserWithEmailAndPassword(auth, email, pass);
                 await setDoc(doc(db, "users", userCred.user.uid), { fullName: name, email: email, role: 'user' });
-                alert("Usajili Umekamilika!");
+                alert("Usajili Umekamilika Kingston! Sasa Ingia.");
                 toggleAuth();
             } catch (e) { alert(e.message); }
         };
@@ -150,9 +151,9 @@
             const desc = document.getElementById('gameDesc').value;
             try {
                 await addDoc(collection(db, "games"), { title, price, desc, date: new Date() });
-                alert("Limepostiwa!");
+                alert("Game Limepostiwa Kingston!");
                 loadGames();
-            } catch (e) { alert("Imeshindikana!"); }
+            } catch (e) { alert("Imeshindikana kuposti!"); }
         };
 
         async function loadGames() {

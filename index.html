@@ -16,26 +16,37 @@
 </head>
 <body>
 
+    <div class="fixed top-2 right-2 z-[100] flex gap-2 text-[10px] glass p-2 rounded-lg">
+        <button onclick="changeLang('sw')">SW</button>
+        <button onclick="changeLang('en')">EN</button>
+        <button onclick="changeLang('zh')">ZH</button>
+    </div>
+
     <section id="authPages" class="flex flex-col items-center justify-center min-h-screen p-5">
         <div id="loginBox" class="glass p-8 rounded-3xl w-full max-w-md">
-            <h2 class="text-3xl font-bold mb-6 text-center gradient-text">Manul Store Login</h2>
+            <h2 class="text-3xl font-bold mb-6 text-center gradient-text lang-login-title">Ingia</h2>
             <div class="space-y-4">
-                <input type="email" id="logEmail" placeholder="Barua Pepe" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
-                <input type="password" id="logPass" placeholder="Nenosiri" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
-                <button onclick="handleLogin()" class="w-full bg-blue-600 p-3 rounded-xl font-bold">Ingia</button>
+                <input type="email" id="logEmail" placeholder="Email" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
+                <input type="password" id="logPass" placeholder="Password" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
+                
+                <div class="text-right">
+                    <button onclick="handleResetPassword()" class="text-[10px] text-gray-500 underline lang-forgot">Umesahau Nenosiri?</button>
+                </div>
+
+                <button onclick="handleLogin()" class="w-full bg-blue-600 p-3 rounded-xl font-bold lang-btn-login">Ingia</button>
             </div>
-            <p class="mt-4 text-center text-sm">Huna akaunti? <button onclick="toggleAuth()" class="text-blue-400">Jisajili</button></p>
+            <p class="mt-4 text-center text-sm"><span class="lang-no-acc">Huna akaunti?</span> <button onclick="toggleAuth()" class="text-blue-400 lang-btn-reg">Jisajili</button></p>
         </div>
 
         <div id="regBox" class="hidden glass p-8 rounded-3xl w-full max-w-md">
-            <h2 class="text-3xl font-bold mb-6 text-center gradient-text">Jisajili</h2>
+            <h2 class="text-3xl font-bold mb-6 text-center gradient-text lang-reg-title">Jisajili</h2>
             <div class="space-y-4">
-                <input type="text" id="regName" placeholder="Jina Kamili" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
-                <input type="email" id="regEmail" placeholder="Barua Pepe" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
-                <input type="password" id="regPass" placeholder="Nenosiri" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
-                <button onclick="handleRegister()" class="w-full bg-purple-600 p-3 rounded-xl font-bold">Tengeneza Akaunti</button>
+                <input type="text" id="regName" placeholder="Name" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
+                <input type="email" id="regEmail" placeholder="Email" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
+                <input type="password" id="regPass" placeholder="Password" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
+                <button onclick="handleRegister()" class="w-full bg-purple-600 p-3 rounded-xl font-bold lang-btn-register">Jisajili</button>
             </div>
-            <button onclick="toggleAuth()" class="mt-4 text-sm text-gray-400">Rudi Login</button>
+            <button onclick="toggleAuth()" class="mt-4 text-sm text-gray-400 lang-back-login">Rudi Login</button>
         </div>
     </section>
 
@@ -45,7 +56,7 @@
             <div class="flex space-x-4 text-[10px] uppercase font-bold">
                 <button onclick="switchTab('home')" id="tab-home" class="active-tab">Home</button>
                 <button onclick="switchTab('store')" id="tab-store">Store</button>
-                <button id="adminBtn" onclick="switchTab('admin')" class="hidden text-orange-400">Admin Panel</button>
+                <button id="adminBtn" onclick="switchTab('admin')" class="hidden text-orange-400">Admin</button>
                 <button onclick="location.reload()" class="text-red-400">Logout</button>
             </div>
         </nav>
@@ -56,35 +67,26 @@
 
         <section id="content-admin" class="hidden p-6">
             <div class="glass p-6 rounded-2xl max-w-xl mx-auto space-y-4 border border-orange-500/30">
-                <h2 id="adminTitle" class="text-xl font-bold text-orange-400">Post/Edit Game</h2>
+                <h2 id="adminTitle" class="text-xl font-bold text-orange-400">Admin: Post/Edit</h2>
                 <input type="hidden" id="editId">
-                <input type="text" id="gameTitle" placeholder="Jina la Game" class="w-full bg-gray-900 p-3 rounded-xl border border-gray-700">
-                <input type="text" id="gamePrice" placeholder="Bei (Tsh)" class="w-full bg-gray-900 p-3 rounded-xl border border-gray-700">
-                
-                <div class="p-3 bg-purple-900/20 rounded-xl border border-purple-500/30">
-                    <p class="text-xs text-purple-300 mb-2 font-bold">1. SEHEMU YA PICHA</p>
-                    <input type="text" id="gameImg" placeholder="Link ya Picha (ImgBB URL)" class="w-full bg-gray-900 p-3 rounded-xl border border-gray-700 outline-none focus:ring-1 ring-purple-500">
-                </div>
-
-                <div class="p-3 bg-blue-900/20 rounded-xl border border-blue-500/30">
-                    <p class="text-xs text-blue-300 mb-2 font-bold">2. SEHEMU YA LINK (DOWNLOAD)</p>
-                    <input type="text" id="gameLink" placeholder="Link ya Game (Mediafire/Drive)" class="w-full bg-gray-900 p-3 rounded-xl border border-gray-700 outline-none focus:ring-1 ring-blue-500">
-                </div>
-
+                <input type="text" id="gameTitle" placeholder="Game Name" class="w-full bg-gray-900 p-3 rounded-xl border border-gray-700">
+                <input type="text" id="gamePrice" placeholder="Price (Tsh)" class="w-full bg-gray-900 p-3 rounded-xl border border-gray-700">
+                <input type="text" id="quickPay" placeholder="Quick Pay Number (Mfano: 0793770731)" class="w-full bg-gray-900 p-3 rounded-xl border border-orange-700">
+                <input type="text" id="gameImg" placeholder="Image URL" class="w-full bg-gray-900 p-3 rounded-xl border border-gray-700">
+                <input type="text" id="gameLink" placeholder="Download Link" class="w-full bg-gray-900 p-3 rounded-xl border border-gray-700">
                 <textarea id="gameDesc" placeholder="Maelezo..." class="w-full bg-gray-900 p-3 rounded-xl border border-gray-700 h-20"></textarea>
-                <button onclick="uploadGame()" id="saveBtn" class="w-full bg-orange-600 p-3 rounded-xl font-bold">HIFADHI GAME</button>
+                <button onclick="uploadGame()" id="saveBtn" class="w-full bg-orange-600 p-3 rounded-xl font-bold">SAVE GAME</button>
             </div>
         </section>
 
         <section id="content-home" class="p-6 text-center">
-            <h1 class="text-2xl font-bold mt-10">Karibu Manul Store!</h1>
-            <p class="text-gray-400 mt-2">Chagua game lako, lipia, na upate link ya download papo hapo.</p>
+            <h1 class="text-2xl font-bold mt-10 lang-home-welcome">Karibu!</h1>
         </section>
     </main>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc, collection, addDoc, getDocs, query, orderBy, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -103,17 +105,43 @@
         const ADMINS = ['amanimosha724@gmail.com', 'kingshamo47@gmail.com'];
         let isAdmin = false;
 
+        const translations = {
+            sw: { loginTitle: "Ingia", forgot: "Umesahau Nenosiri?", btnLogin: "Ingia", noAcc: "Huna akaunti?", btnReg: "Jisajili", regTitle: "Jisajili", btnRegister: "Jisajili", backLogin: "Rudi Login", welcome: "Karibu Manul Store!" },
+            en: { loginTitle: "Login", forgot: "Forgot Password?", btnLogin: "Login", noAcc: "No account?", btnReg: "Register", regTitle: "Register", btnRegister: "Register", backLogin: "Back to Login", welcome: "Welcome to Manul Store!" },
+            zh: { loginTitle: "登录", forgot: "忘记密码?", btnLogin: "登录", noAcc: "没有账号?", btnReg: "注册", regTitle: "注册", btnRegister: "注册", backLogin: "返回登录", welcome: "欢迎来到 Manul 商店!" }
+        };
+
+        window.changeLang = (lang) => {
+            const t = translations[lang];
+            document.querySelector('.lang-login-title').innerText = t.loginTitle;
+            document.querySelector('.lang-forgot').innerText = t.forgot;
+            document.querySelector('.lang-btn-login').innerText = t.btnLogin;
+            document.querySelector('.lang-no-acc').innerText = t.noAcc;
+            document.querySelector('.lang-btn-reg').innerText = t.btnReg;
+            document.querySelector('.lang-reg-title').innerText = t.regTitle;
+            document.querySelector('.lang-btn-register').innerText = t.btnRegister;
+            document.querySelector('.lang-back-login').innerText = t.backLogin;
+            document.querySelector('.lang-home-welcome').innerText = t.welcome;
+        };
+
+        window.handleResetPassword = async () => {
+            const email = document.getElementById('logEmail').value;
+            if(!email) return alert("Weka email!");
+            try { await sendPasswordResetEmail(auth, email); alert("Link imetumwa kwenye email yako!"); }
+            catch (e) { alert(e.message); }
+        };
+
         window.handleLogin = async () => {
             const email = document.getElementById('logEmail').value.trim();
             const pass = document.getElementById('logPass').value;
             try {
-                const cred = await signInWithEmailAndPassword(auth, email, pass);
+                await signInWithEmailAndPassword(auth, email, pass);
                 isAdmin = ADMINS.includes(email.toLowerCase());
                 if(isAdmin) document.getElementById('adminBtn').classList.remove('hidden');
                 document.getElementById('authPages').classList.add('hidden');
                 document.getElementById('dashboard').classList.remove('hidden');
                 loadGames();
-            } catch (e) { alert("Error!"); }
+            } catch (e) { alert("Login Failed!"); }
         };
 
         window.uploadGame = async () => {
@@ -121,22 +149,17 @@
             const data = {
                 title: document.getElementById('gameTitle').value,
                 price: document.getElementById('gamePrice').value,
+                quickPay: document.getElementById('quickPay').value,
                 img: document.getElementById('gameImg').value,
                 link: document.getElementById('gameLink').value,
                 desc: document.getElementById('gameDesc').value,
                 date: new Date()
             };
-
             try {
-                if(id) {
-                    await updateDoc(doc(db, "games", id), data);
-                    alert("Imebadilishwa!");
-                } else {
-                    await addDoc(collection(db, "games"), data);
-                    alert("Imepostiwa!");
-                }
+                if(id) await updateDoc(doc(db, "games", id), data);
+                else await addDoc(collection(db, "games"), data);
                 location.reload();
-            } catch (e) { alert("Imefeli!"); }
+            } catch (e) { alert(e.message); }
         };
 
         window.loadGames = async () => {
@@ -148,84 +171,82 @@
                 const g = d.data();
                 const id = d.id;
                 list.innerHTML += `
-                    <div class="glass p-4 rounded-2xl flex flex-col space-y-3 border border-white/5">
-                        <img src="${g.img}" class="w-full h-44 object-cover rounded-xl shadow-lg">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="font-bold text-blue-300">${g.title}</h3>
-                                <p class="text-green-400 font-bold">${g.price}</p>
-                            </div>
-                            ${isAdmin ? `
-                                <div class="flex gap-2">
-                                    <button onclick="editGame('${id}')" class="text-orange-400 text-xs"><i class="fas fa-edit"></i></button>
-                                    <button onclick="deleteGame('${id}')" class="text-red-500 text-xs"><i class="fas fa-trash"></i></button>
-                                </div>
-                            ` : ''}
+                    <div class="glass p-4 rounded-2xl flex flex-col space-y-3">
+                        <img src="${g.img}" class="w-full h-44 object-cover rounded-xl">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold text-blue-300">${g.title}</h3>
+                            <p class="text-green-400 font-bold">${g.price}</p>
                         </div>
-                        <p class="text-[10px] text-gray-500">${g.desc}</p>
-                        
-                        <div class="bg-black/40 p-3 rounded-xl border border-white/5">
-                            <button onclick="verifyPay('${id}', '${g.link}')" class="w-full bg-purple-600 py-2 rounded-lg text-xs font-bold uppercase">Verify Payment to Download</button>
-                            <div id="download-${id}" class="hidden mt-2 text-center">
-                                <a href="${g.link}" target="_blank" class="text-blue-400 underline text-xs font-bold">BONYEZA HAPA KU-DOWNLOAD</a>
-                            </div>
+                        ${isAdmin ? `<div class="flex gap-2"><button onclick="editGame('${id}')">Edit</button><button onclick="deleteGame('${id}')">Delete</button></div>` : ''}
+                        <button onclick="verifyAndPay('${id}', '${g.quickPay}')" class="w-full bg-purple-600 py-2 rounded-lg text-xs font-bold">PAY & DOWNLOAD</button>
+                        <div id="down-${id}" class="hidden p-2 text-center text-xs bg-blue-900/30 rounded-lg">
+                            <a href="${g.link}" target="_blank" class="underline">BONYEZA HAPA KU-DOWNLOAD</a>
                         </div>
                     </div>`;
             });
         };
 
-        window.verifyPay = (id, link) => {
-            let picha = prompt("Tafadhali weka 'Namba ya Muamala' au 'Jina la Aliyetuma' ili kuthibitisha malipo:");
-            if(picha) {
-                alert("Malipo yanahakikiwa... Link imefunguliwa!");
-                document.getElementById('download-'+id).classList.remove('hidden');
+        window.verifyAndPay = async (id, payNum) => {
+            const muamala = prompt(`LIPIA ${payNum} kisha weka ID ya muamala:`);
+            if(!muamala) return;
+
+            const check = await getDoc(doc(db, "transactions", muamala));
+            if(check.exists()) {
+                const data = check.data();
+                const now = new Date();
+                const expDate = data.expiryDate.toDate();
+                
+                if(data.usedBy !== auth.currentUser.uid) {
+                    alert("ID hii tayari imetumika na akaunti nyingine!");
+                    return;
+                }
+                if(now > expDate) {
+                    alert("Kodi hii imeisha muda wake (Expired)!");
+                    return;
+                }
+                document.getElementById('down-'+id).classList.remove('hidden');
+            } else {
+                // First time use: Register transaction
+                const expiry = new Date();
+                expiry.setMonth(expiry.getMonth() + 1); // Expiry in 1 month
+                await setDoc(doc(db, "transactions", muamala), {
+                    usedBy: auth.currentUser.uid,
+                    expiryDate: expiry
+                });
+                alert("Malipo yamethibitishwa! Inatumika kwa mwezi 1.");
+                document.getElementById('down-'+id).classList.remove('hidden');
             }
         };
 
+        window.deleteGame = async (id) => { if(confirm("Futa?")) { await deleteDoc(doc(db, "games", id)); loadGames(); } };
         window.editGame = async (id) => {
-            const docRef = await getDoc(doc(db, "games", id));
-            const g = docRef.data();
+            const d = await getDoc(doc(db, "games", id));
+            const g = d.data();
             document.getElementById('gameTitle').value = g.title;
             document.getElementById('gamePrice').value = g.price;
+            document.getElementById('quickPay').value = g.quickPay;
             document.getElementById('gameImg').value = g.img;
             document.getElementById('gameLink').value = g.link;
             document.getElementById('gameDesc').value = g.desc;
             document.getElementById('editId').value = id;
-            document.getElementById('adminTitle').innerText = "Edit Game: " + g.title;
-            document.getElementById('saveBtn').innerText = "UPDATE GAME";
             switchTab('admin');
-        };
-
-        window.deleteGame = async (id) => {
-            if(confirm("Una uhakika unataka kufuta kabisa game hili?")) {
-                await deleteDoc(doc(db, "games", id));
-                alert("Limefutwa!");
-                loadGames();
-            }
         };
 
         window.switchTab = (tab) => {
             ['home', 'store', 'admin'].forEach(t => document.getElementById('content-' + t).classList.add('hidden'));
             document.getElementById('content-' + tab).classList.remove('hidden');
-            ['home', 'store', 'admin'].forEach(t => document.getElementById('tab-' + t)?.classList.remove('active-tab'));
-            document.getElementById('tab-' + tab)?.classList.add('active-tab');
         };
-
-        window.toggleAuth = () => {
-            document.getElementById('loginBox').classList.toggle('hidden');
-            document.getElementById('regBox').classList.toggle('hidden');
-        };
-
+        window.toggleAuth = () => { document.getElementById('loginBox').classList.toggle('hidden'); document.getElementById('regBox').classList.toggle('hidden'); };
         window.handleRegister = async () => {
             const name = document.getElementById('regName').value;
             const email = document.getElementById('regEmail').value;
             const pass = document.getElementById('regPass').value;
             try {
-                const userCred = await createUserWithEmailAndPassword(auth, email, pass);
-                await setDoc(doc(db, "users", userCred.user.uid), { fullName: name, email: email, role: 'user' });
-                alert("Hongera! Jisajili kisha Login.");
+                const cred = await createUserWithEmailAndPassword(auth, email, pass);
+                await setDoc(doc(db, "users", cred.user.uid), { fullName: name, email: email, role: 'user' });
+                alert("Jisajili kisha Login.");
                 toggleAuth();
-            } catch (e) { alert("Email tayari ipo au nenosiri ni fupi!"); }
+            } catch (e) { alert(e.message); }
         };
     </script>
 </body>

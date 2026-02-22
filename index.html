@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manul GAME Store - Kingston</title>
+    <title>Manul GAME Official Store - Kingston</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -12,6 +12,7 @@
         .gradient-text { background: linear-gradient(to right, #a855f7, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hidden { display: none; }
         .active-tab { border-bottom: 2px solid #a855f7; color: #a855f7; font-weight: bold; }
+        
         .floating-btns { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 1000; }
         .btn-call { background: #3b82f6; width: 50px; height: 50px; border-radius: 50%; display: flex; items-center; justify-content: center; }
         .btn-wa { background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; items-center; justify-content: center; }
@@ -22,29 +23,26 @@
     <section id="authPages" class="flex flex-col items-center justify-center min-h-screen p-5">
         <div id="regBox" class="glass p-8 rounded-3xl w-full max-w-md">
             <h2 class="text-3xl font-bold mb-2 text-center gradient-text">Manul Store</h2>
-            <p class="text-xs text-gray-500 text-center mb-6">Jisajili (Kingston Project)</p>
             <div class="space-y-4">
-                <input type="text" id="regName" placeholder="Jina Kamili" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
-                <input type="email" id="regEmail" placeholder="Barua Pepe" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
-                <input type="password" id="regPass" placeholder="Nenosiri" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
-                <button onclick="handleRegister()" class="w-full bg-purple-600 p-3 rounded-xl font-bold">Tengeneza Akaunti</button>
+                <input type="text" id="regName" placeholder="Jina Kamili" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
+                <input type="email" id="regEmail" placeholder="Barua Pepe" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
+                <input type="password" id="regPass" placeholder="Nenosiri" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
+                <button onclick="handleRegister()" class="w-full bg-purple-600 p-3 rounded-xl font-bold">Jisajili</button>
             </div>
-            <p class="mt-4 text-center text-sm text-gray-400">Una akaunti? <button onclick="toggleAuth()" class="text-purple-400 font-bold">Ingia</button></p>
+            <p class="mt-4 text-center text-sm">Tayari una akaunti? <button onclick="toggleAuth()" class="text-purple-400 font-bold">Ingia</button></p>
         </div>
 
         <div id="loginBox" class="hidden glass p-8 rounded-3xl w-full max-w-md">
             <h2 class="text-3xl font-bold mb-6 text-center text-blue-400">Karibu Tena</h2>
             <div class="space-y-4">
-                <input type="email" id="logEmail" placeholder="Barua Pepe" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
-                <input type="password" id="logPass" placeholder="Nenosiri" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
-                
+                <input type="email" id="logEmail" placeholder="Barua Pepe" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
+                <input type="password" id="logPass" placeholder="Nenosiri" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl focus:outline-none">
                 <div class="text-right">
                     <button onclick="handleResetPassword()" class="text-[10px] text-gray-500 hover:text-blue-400 underline">Umesahau Nenosiri?</button>
                 </div>
-
                 <button onclick="handleLogin()" class="w-full bg-blue-600 p-3 rounded-xl font-bold">Ingia</button>
             </div>
-            <p class="mt-4 text-center text-sm text-gray-400">Huna akaunti? <button onclick="toggleAuth()" class="text-blue-400 font-bold">Jisajili</button></p>
+            <p class="mt-4 text-center text-sm">Huna akaunti? <button onclick="toggleAuth()" class="text-blue-400 font-bold">Jisajili</button></p>
         </div>
     </section>
 
@@ -61,26 +59,25 @@
 
         <section id="content-home" class="p-6 text-center">
             <h1 class="text-2xl font-bold mt-10">Karibu, <span id="userNameDisplay" class="gradient-text text-3xl">Gamer</span>!</h1>
-            <div class="mt-8 glass p-6 rounded-2xl max-w-lg mx-auto">
-                <h3 class="text-xl font-bold mb-2 text-purple-400">Updates & Gallery</h3>
-                <p class="text-gray-400 text-sm">Pata updates za picha na magame mapya hapa kila siku.</p>
+            <div class="mt-8 glass p-6 rounded-2xl max-w-md mx-auto">
+                <h3 class="font-bold text-purple-400">Kingston Project Updates</h3>
+                <p class="text-gray-400 text-sm mt-2">Duka limeboreshwa. Sasa unaweza kuacha maoni (Comments) kwenye kila game!</p>
             </div>
         </section>
 
         <section id="content-store" class="hidden p-6">
-            <h2 class="text-xl font-bold mb-6 text-center">Gallery & Store</h2>
-            <div id="gameList" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+            <div id="gameList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </section>
 
         <section id="content-admin" class="hidden p-6">
-            <div class="glass p-6 rounded-2xl space-y-4 max-w-xl mx-auto">
-                <h2 class="text-xl font-bold text-orange-400 text-center">Admin: Post Game/Update</h2>
+            <div class="glass p-6 rounded-2xl space-y-4 max-w-xl mx-auto border-2 border-orange-500/20">
+                <h2 class="text-xl font-bold text-orange-400 text-center">Admin: Post New Update</h2>
                 <input type="text" id="gameTitle" placeholder="Jina la Game" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
                 <input type="text" id="gamePrice" placeholder="Bei (Mfano: Tsh 10,000)" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
-                <input type="text" id="gameImg" placeholder="Paste Link ya Picha (URL)" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none ring-1 ring-purple-500">
-                <input type="text" id="gameLink" placeholder="External Link (Mfano: Link ya YouTube/Drive)" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
-                <textarea id="gameDesc" placeholder="Maelezo zaidi..." class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none h-24"></textarea>
-                <button onclick="uploadGame()" class="w-full bg-orange-600 p-3 rounded-xl font-bold hover:bg-orange-700 transition">POST NOW</button>
+                <input type="text" id="gameImg" placeholder="Link ya Picha (Paste URL)" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none ring-1 ring-purple-500">
+                <input type="text" id="gameLink" placeholder="External Link (Drive/YouTube)" class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none">
+                <textarea id="gameDesc" placeholder="Maelezo..." class="w-full bg-gray-900 border border-gray-700 p-3 rounded-xl outline-none h-24"></textarea>
+                <button onclick="uploadGame()" class="w-full bg-orange-600 p-3 rounded-xl font-bold hover:bg-orange-700">POST TO STORE</button>
             </div>
         </section>
 
@@ -95,6 +92,14 @@
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+        // ==========================================
+        // 1. SEHEMU YA MA-ADMIN (WEKA EMAIL HAPA)
+        // ==========================================
+        const MA_ADMIN_WENGINE = [
+            'amanimosha724@gmail.com', // Wewe
+            'msaidizi@gmail.com'       // Badilisha hii uweke email ya msaidizi wako
+        ];
+
         const firebaseConfig = {
             apiKey: "AIzaSyDu6sdbL4l8pbycSdSm0qHm_ndGz3FrWbY",
             authDomain: "kingston-bb437.firebaseapp.com",
@@ -108,31 +113,38 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // RESET PASSWORD FUNCTION
+        // FORGOT PASSWORD
         window.handleResetPassword = async () => {
             const email = document.getElementById('logEmail').value;
-            if(!email) return alert("Tafadhali andika barua pepe (email) yako kwanza kwenye kisanduku!");
+            if(!email) return alert("Andika email yako kwanza!");
             try {
                 await sendPasswordResetEmail(auth, email);
-                alert("Tumekutumia link kwenye email yako " + email + " ili ubadilishe password.");
+                alert("Link ya kubadili password imetumwa!");
             } catch (e) { alert("Kosa: " + e.message); }
         };
 
+        // LOGIN
         window.handleLogin = async () => {
             const email = document.getElementById('logEmail').value;
             const pass = document.getElementById('logPass').value;
             try {
-                const userCred = await signInWithEmailAndPassword(auth, email, pass);
+                const userCred = await signInWithEmailAndPassword(auth, email.trim(), pass);
                 const userDoc = await getDoc(doc(db, "users", userCred.user.uid));
                 const userData = userDoc.data();
+                
                 document.getElementById('authPages').classList.add('hidden');
                 document.getElementById('dashboard').classList.remove('hidden');
                 document.getElementById('userNameDisplay').innerText = userData.fullName;
-                if(userData.role === 'admin') document.getElementById('adminBtn').classList.remove('hidden');
+
+                // Angalia kama ni admin
+                if(MA_ADMIN_WENGINE.includes(email.toLowerCase().trim()) || userData.role === 'admin') {
+                    document.getElementById('adminBtn').classList.remove('hidden');
+                }
                 loadGames();
-            } catch (e) { alert("Login imeshindikana! Hakikisha email na password ni sahihi."); }
+            } catch (e) { alert("Login imeshindikana!"); }
         };
 
+        // REGISTER
         window.handleRegister = async () => {
             const name = document.getElementById('regName').value;
             const email = document.getElementById('regEmail').value;
@@ -145,40 +157,79 @@
             } catch (e) { alert(e.message); }
         };
 
+        // POST GAME
         window.uploadGame = async () => {
             const title = document.getElementById('gameTitle').value;
             const price = document.getElementById('gamePrice').value;
             const img = document.getElementById('gameImg').value;
             const link = document.getElementById('gameLink').value;
             const desc = document.getElementById('gameDesc').value;
-            if(!title || !img) return alert("Jaza angalau Jina na Picha!");
+            if(!title || !img) return alert("Jaza jina na picha!");
             try {
                 await addDoc(collection(db, "games"), { title, price, img, link, desc, date: new Date() });
                 alert("Imepostiwa!");
                 location.reload(); 
-            } catch (e) { alert("Kosa la kuposti!"); }
+            } catch (e) { alert("Error!"); }
         };
 
+        // LOAD GAMES WITH COMMENT SECTION
         async function loadGames() {
             const q = query(collection(db, "games"), orderBy("date", "desc"));
             const querySnapshot = await getDocs(q);
             const gameList = document.getElementById('gameList');
             gameList.innerHTML = "";
-            querySnapshot.forEach((doc) => {
-                const game = doc.data();
+            querySnapshot.forEach((docSnap) => {
+                const game = docSnap.data();
+                const gameId = docSnap.id;
                 gameList.innerHTML += `
-                    <div class="glass p-4 rounded-2xl space-y-3">
-                        <img src="${game.img}" class="w-full h-48 object-cover rounded-xl" onerror="this.src='https://via.placeholder.com/300'">
+                    <div class="glass p-4 rounded-2xl flex flex-col space-y-3">
+                        <img src="${game.img}" class="w-full h-48 object-cover rounded-xl shadow-lg">
                         <div>
                             <h4 class="font-bold text-lg text-blue-300">${game.title}</h4>
                             <p class="text-green-400 font-bold text-sm">${game.price}</p>
-                            <p class="text-gray-400 text-xs mt-1">${game.desc}</p>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="window.open('https://wa.me/255793770731?text=Nahitaji: ${game.title}')" class="flex-1 bg-purple-600 py-2 rounded-lg text-xs font-bold">WHATSAPP</button>
-                            ${game.link ? `<button onclick="window.open('${game.link}')" class="flex-1 bg-blue-600 py-2 rounded-lg text-xs font-bold">LINK</button>` : ''}
+                            <button onclick="window.open('https://wa.me/255793770731?text=Nahitaji: ${game.title}')" class="flex-1 bg-purple-600 py-2 rounded-lg text-xs font-bold uppercase">Buy</button>
+                            <button onclick="toggleComments('${gameId}')" class="flex-1 bg-gray-700 py-2 rounded-lg text-xs font-bold uppercase"><i class="fas fa-comment"></i> Review</button>
+                        </div>
+                        <div id="comments-${gameId}" class="hidden mt-2 p-3 bg-black/40 rounded-xl text-[11px]">
+                            <div id="list-${gameId}" class="max-h-24 overflow-y-auto mb-2 space-y-1 text-gray-400">
+                                <p>Hakuna maoni bado...</p>
+                            </div>
+                            <div class="flex gap-1">
+                                <input type="text" id="input-${gameId}" placeholder="Andika maoni..." class="flex-1 bg-gray-800 border-none p-2 rounded-lg outline-none">
+                                <button onclick="sendComment('${gameId}')" class="bg-blue-600 px-3 rounded-lg"><i class="fas fa-paper-plane"></i></button>
+                            </div>
                         </div>
                     </div>`;
+                loadComments(gameId);
+            });
+        }
+
+        // COMMENTS LOGIC
+        window.toggleComments = (id) => document.getElementById('comments-' + id).classList.toggle('hidden');
+
+        window.sendComment = async (gameId) => {
+            const text = document.getElementById('input-' + gameId).value;
+            if(!text) return;
+            try {
+                await addDoc(collection(db, `games/${gameId}/comments`), {
+                    text: text,
+                    user: auth.currentUser.email.split('@')[0],
+                    date: new Date()
+                });
+                document.getElementById('input-' + gameId).value = "";
+                loadComments(gameId);
+            } catch (e) { alert("Ingia kwanza kutoa maoni!"); }
+        };
+
+        async function loadComments(gameId) {
+            const q = query(collection(db, `games/${gameId}/comments`), orderBy("date", "asc"));
+            const snap = await getDocs(q);
+            const list = document.getElementById('list-' + gameId);
+            if(!snap.empty) list.innerHTML = "";
+            snap.forEach(d => {
+                list.innerHTML += `<p><b class="text-purple-400">${d.data().user}:</b> ${d.data().text}</p>`;
             });
         }
 
